@@ -1,7 +1,6 @@
 ﻿namespace EAgendaMedica.Dominio.ModuloAtividade
 {
-    public enum TipoAtividadeEnum
-    {
+    public enum TipoAtividadeEnum {
         Consulta = 0, Cirurgia = 1,
     }
 }

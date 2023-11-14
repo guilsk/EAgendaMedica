@@ -1,7 +1,9 @@
 using EAgendaMedica.Aplicacao.ModuloMedico;
 using EAgendaMedica.Dominio.Compartilhado;
+using EAgendaMedica.Dominio.ModuloAtividade;
 using EAgendaMedica.Dominio.ModuloMedico;
 using EAgendaMedica.Infra.Orm.Compartilhado;
+using EAgendaMedica.Infra.Orm.ModuloAtividade;
 using EAgendaMedica.Infra.Orm.ModuloMedico;
 using EAgendaMedica.WebApi.Config;
 using EAgendaMedica.WebApi.Config.AutoMapperProfiles;
@@ -29,7 +31,7 @@ namespace EAgendaMedica.WebApi {
             builder.Services.AddTransient<IRepositorioMedico, RepositorioMedicoOrm>();
             builder.Services.AddTransient<ServicoMedico>();
 
-            //builder.Services.AddTransient<IRepositorioAtividade, RepositorioAtividadeOrm>();
+            builder.Services.AddTransient<IRepositorioAtividade, RepositorioAtividadeOrm>();
             //builder.Services.AddTransient<ServicoAtividade>();
 
             //builder.Services.AddTransient<ConfigurarMedicoMappingAction>();

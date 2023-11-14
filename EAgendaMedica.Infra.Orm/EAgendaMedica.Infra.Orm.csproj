@@ -16,8 +16,4 @@
     <ProjectReference Include="..\EAgendaMedica.Dominio\EAgendaMedica.Dominio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ModuloAtividade\" />
-  </ItemGroup>
-
 </Project>
