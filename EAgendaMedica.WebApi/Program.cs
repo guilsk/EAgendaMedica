@@ -1,3 +1,4 @@
+using EAgendaMedica.Aplicacao.ModuloAtividade;
 using EAgendaMedica.Aplicacao.ModuloMedico;
 using EAgendaMedica.Dominio.Compartilhado;
 using EAgendaMedica.Dominio.ModuloAtividade;
@@ -32,13 +33,13 @@ namespace EAgendaMedica.WebApi {
             builder.Services.AddTransient<ServicoMedico>();
 
             builder.Services.AddTransient<IRepositorioAtividade, RepositorioAtividadeOrm>();
-            //builder.Services.AddTransient<ServicoAtividade>();
+            builder.Services.AddTransient<ServicoAtividade>();
 
-            //builder.Services.AddTransient<ConfigurarMedicoMappingAction>();
+            builder.Services.AddTransient<ConfigurarMedicoMappingAction>();
 
             builder.Services.AddAutoMapper(config => {
                 config.AddProfile<MedicoProfile>();
-                //config.AddProfile<NotaProfile>();
+                config.AddProfile<AtividadeProfile>();
             });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

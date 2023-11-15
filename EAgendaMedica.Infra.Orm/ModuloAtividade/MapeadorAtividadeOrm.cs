@@ -15,8 +15,8 @@ namespace EAgendaMedica.Infra.Orm.ModuloAtividade
             builder.Property(x => x.Data).IsRequired();
             builder.Property(x => x.HoraInicio).IsRequired();
             builder.Property(x => x.HoraFim).IsRequired();
-            builder.Property(x => x.TipoAtividade).IsRequired();
-            builder.Property(x => x.Medicos);
+            builder.Property(x => x.TipoAtividade).HasConversion<int>().IsRequired();
+            builder.HasMany(x => x.Medicos);
         }
     }
 }

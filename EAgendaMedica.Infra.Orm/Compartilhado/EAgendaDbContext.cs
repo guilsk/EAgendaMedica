@@ -1,4 +1,5 @@
 ﻿using EAgendaMedica.Dominio.Compartilhado;
+using EAgendaMedica.Infra.Orm.ModuloAtividade;
 using EAgendaMedica.Infra.Orm.ModuloMedico;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ namespace EAgendaMedica.Infra.Orm.Compartilhado {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new MapeadorMedicoOrm());
 
-            //modelBuilder.ApplyConfiguration(new MapeadorAtividadeOrm());
+            modelBuilder.ApplyConfiguration(new MapeadorAtividadeOrm());
 
             base.OnModelCreating(modelBuilder);
         }

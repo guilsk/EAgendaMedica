@@ -1,5 +1,6 @@
 using AutoMapper;
 using EAgendaMedica.Dominio.ModuloAtividade;
+using EAgendaMedica.Dominio.ModuloMedico;
 using EAgendaMedica.WebApi.ViewModels;
 
 namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
@@ -10,6 +11,19 @@ namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
 
             CreateMap<InserirAtividadeViewModel, Atividade>();
             CreateMap<EditarAtividadeViewModel, Atividade>();
+        }
+    }
+
+    public class ConfigurarMedicoMappingAction : IMappingAction<FormsAtividadeViewModel, Atividade> {
+        private readonly IRepositorioMedico repositorioMedico;
+
+        public ConfigurarMedicoMappingAction(IRepositorioMedico repositorioMedico) {
+            this.repositorioMedico = repositorioMedico;
+        }
+
+        public void Process(FormsAtividadeViewModel viewModel, Atividade atividade, ResolutionContext context) {
+            foreach(Guid id in viewModel.MedicosId)
+            atividade.Medicos.Add(repositorioMedico.SelecionarPorId(id));
         }
     }
 }

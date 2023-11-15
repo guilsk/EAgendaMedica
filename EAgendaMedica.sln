@@ -27,9 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - Testes Integração",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Dominio.Tests", "EAgendaMedica.Dominio.Tests\EAgendaMedica.Dominio.Tests.csproj", "{C5A91B8F-1378-4CA7-AA17-E3E5772E336D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAgendaMedica.Aplicacao", "EAgendaMedica.Aplicacao\EAgendaMedica.Aplicacao.csproj", "{F1D2022D-A481-45BD-AA00-A4BCE995D0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Aplicacao", "EAgendaMedica.Aplicacao\EAgendaMedica.Aplicacao.csproj", "{F1D2022D-A481-45BD-AA00-A4BCE995D0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAgendaMedica.WebApi", "EAgendaMedica.WebApi\EAgendaMedica.WebApi.csproj", "{B39CB3E0-5411-4D08-9F79-849DD0DE737C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.WebApi", "EAgendaMedica.WebApi\EAgendaMedica.WebApi.csproj", "{B39CB3E0-5411-4D08-9F79-849DD0DE737C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{F7708D97-73AB-47DB-9D6F-459818DE5BD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAgendaMedica.ConsoleApp", "EAgendaMedica.ConsoleApp\EAgendaMedica.ConsoleApp.csproj", "{9F2B21A5-074B-462C-9577-D06B27760495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{B39CB3E0-5411-4D08-9F79-849DD0DE737C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39CB3E0-5411-4D08-9F79-849DD0DE737C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39CB3E0-5411-4D08-9F79-849DD0DE737C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F2B21A5-074B-462C-9577-D06B27760495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F2B21A5-074B-462C-9577-D06B27760495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F2B21A5-074B-462C-9577-D06B27760495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F2B21A5-074B-462C-9577-D06B27760495}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,7 @@ Global
 		{C5A91B8F-1378-4CA7-AA17-E3E5772E336D} = {FC1471CC-030B-40E4-AD9F-43F30077C14E}
 		{F1D2022D-A481-45BD-AA00-A4BCE995D0B4} = {4109D62B-E3E3-4231-AC4D-2F12E625B0E1}
 		{B39CB3E0-5411-4D08-9F79-849DD0DE737C} = {2C3A8ECC-DA2D-4D89-8AD8-7E6694429811}
+		{9F2B21A5-074B-462C-9577-D06B27760495} = {F7708D97-73AB-47DB-9D6F-459818DE5BD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0AD32E6-9940-4DF6-BF72-32210EC388F8}
