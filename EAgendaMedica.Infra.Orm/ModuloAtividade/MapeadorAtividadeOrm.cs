@@ -16,7 +16,7 @@ namespace EAgendaMedica.Infra.Orm.ModuloAtividade
             builder.Property(x => x.HoraInicio).IsRequired();
             builder.Property(x => x.HoraFim).IsRequired();
             builder.Property(x => x.TipoAtividade).HasConversion<int>().IsRequired();
-            builder.HasMany(x => x.Medicos);
+            builder.HasMany(x => x.Medicos).WithMany(x => x.Atividades).UsingEntity(x => x.ToTable("TBMedico_TBAtividade"));
         }
     }
 }

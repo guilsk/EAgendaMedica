@@ -69,7 +69,11 @@ namespace EAgendaMedica.Aplicacao.ModuloAtividade {
 
             var resultadoValidacao = validator.Validate(atividade);
 
+            bool conflitoDeHorario = validator.ConfirmarSeAtividadeTemConflitoDeHorario(atividade);
+
             List<Error> errors = new List<Error>();
+
+            if(conflitoDeHorario) errors.Add(new Error("Esta atividade tem conflito de horário com outra atividade desse mesmo médico."));
 
             foreach (var error in resultadoValidacao.Errors) {
                 errors.Add(new Error(error.ErrorMessage));

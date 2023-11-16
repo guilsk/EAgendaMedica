@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.1 - Testes Unitários", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.2 - Testes Integração", "6.2 - Testes Integração", "{2B54B4E1-891B-43FD-9D4B-F4D72BBBA383}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Dominio.Tests", "EAgendaMedica.Dominio.Tests\EAgendaMedica.Dominio.Tests.csproj", "{C5A91B8F-1378-4CA7-AA17-E3E5772E336D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.TestesUnitarios", "EAgendaMedica.Dominio.Tests\EAgendaMedica.TestesUnitarios.csproj", "{C5A91B8F-1378-4CA7-AA17-E3E5772E336D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Aplicacao", "EAgendaMedica.Aplicacao\EAgendaMedica.Aplicacao.csproj", "{F1D2022D-A481-45BD-AA00-A4BCE995D0B4}"
 EndProject

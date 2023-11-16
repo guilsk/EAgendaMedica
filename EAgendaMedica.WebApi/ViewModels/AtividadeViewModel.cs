@@ -10,14 +10,13 @@ namespace EAgendaMedica.WebApi.ViewModels {
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFim { get; set; }
         public TipoAtividadeEnum TipoAtividade { get; set; }
-        public List<Medico> Medicos { get; set; }
-
         public List<Guid> MedicosId { get; set; }
     }
 
     public class InserirAtividadeViewModel : FormsAtividadeViewModel {}
 
-    public class EditarAtividadeViewModel : FormsAtividadeViewModel {}
+    public class EditarAtividadeViewModel : FormsAtividadeViewModel {
+    }
 
     public class ListarAtividadeViewModel {
         public Guid Id { get; set; }

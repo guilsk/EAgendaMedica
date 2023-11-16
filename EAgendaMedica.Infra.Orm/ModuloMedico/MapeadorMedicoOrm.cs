@@ -11,7 +11,7 @@ namespace EAgendaMedica.Infra.Orm.ModuloMedico {
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.Property(x => x.Nome).IsRequired();
             builder.Property(x => x.Crm).IsRequired();
-            builder.HasMany(x => x.Atividades);
+            builder.HasMany(x => x.Atividades).WithMany(x => x.Medicos).UsingEntity(x => x.ToTable("TBMedico_TBAtividade"));
 
         }
     }

@@ -4,7 +4,7 @@ using FluentAssertions;
 using FluentValidation.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EAgendaMedica.Dominio.Tests.Domínio.ModuloMedico
+namespace EAgendaMedica.TestesUnitarios.Domínio.ModuloMedico
 {
     [TestClass]
     public class MedicoTest

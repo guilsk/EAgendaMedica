@@ -11,5 +11,9 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
         public TipoAtividadeEnum TipoAtividade { get; set; }
         public List<Medico> Medicos { get; set; }
 
+        public Atividade() {
+            Medicos = new List<Medico>();
+        }
     }
+
 }

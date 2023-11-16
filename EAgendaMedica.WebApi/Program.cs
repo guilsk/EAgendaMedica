@@ -10,6 +10,10 @@ using EAgendaMedica.WebApi.Config;
 using EAgendaMedica.WebApi.Config.AutoMapperProfiles;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Any;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.OpenApi.Models;
 
 namespace EAgendaMedica.WebApi {
     public class Program {
@@ -18,7 +22,6 @@ namespace EAgendaMedica.WebApi {
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
             builder.Services.Configure<ApiBehaviorOptions>(config => {
                 config.SuppressModelStateInvalidFilter = true;
             });
@@ -42,9 +45,17 @@ namespace EAgendaMedica.WebApi {
                 config.AddProfile<AtividadeProfile>();
             });
 
+            builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c => {
+                c.MapType<TimeSpan>(() => new OpenApiSchema {
+                    Type = "string",
+                    Example = new OpenApiString("00:00:00")
+                });
+
+            });
 
             var app = builder.Build();
 
@@ -64,6 +75,17 @@ namespace EAgendaMedica.WebApi {
             app.MapControllers();
 
             app.Run();
+        }
+    }
+
+    public class TimeSpanToStringConverter : JsonConverter<TimeSpan> {
+        public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+            var value = reader.GetString();
+            return TimeSpan.Parse(value);
+        }
+
+        public override void Write(Utf8JsonWriter writer, TimeSpan value, JsonSerializerOptions options) {
+            writer.WriteStringValue(value.ToString());
         }
     }
 }

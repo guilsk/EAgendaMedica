@@ -8,12 +8,11 @@ namespace EAgendaMedica.WebApi.Controllers {
 
     [Route("api/atividades")]
     [ApiController]
-    public class AtividadeController : ControllerBase{
+    public class AtividadeController : ApiControllerBase{
         private readonly ServicoAtividade servicoAtividade;
         private readonly IMapper mapeador;
 
-        public AtividadeController(ServicoAtividade servicoAtividade, IMapper mapeador)
-        {
+        public AtividadeController(ServicoAtividade servicoAtividade, IMapper mapeador) {
             this.servicoAtividade = servicoAtividade;
             this.mapeador = mapeador;
         }
@@ -48,6 +47,7 @@ namespace EAgendaMedica.WebApi.Controllers {
         [HttpPost]
         [ProducesResponseType(typeof(InserirAtividadeViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 400)]
+        [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]
         public async Task<IActionResult> Inserir(InserirAtividadeViewModel viewModel) {
 
