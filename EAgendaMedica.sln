@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Distribuição", "1 - Distribuição", "{2C3A8ECC-DA2D-4D89-8AD8-7E6694429811}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Distribuição", "2 - Distribuição", "{2C3A8ECC-DA2D-4D89-8AD8-7E6694429811}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Aplicação", "2 - Aplicação", "{4109D62B-E3E3-4231-AC4D-2F12E625B0E1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Aplicação", "3 - Aplicação", "{4109D62B-E3E3-4231-AC4D-2F12E625B0E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domínio", "3 - Domínio", "{7FD986B2-C0B5-4ED0-B988-A919D2BF1AE6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domínio", "4 - Domínio", "{7FD986B2-C0B5-4ED0-B988-A919D2BF1AE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{1B3312A4-6A4F-4B19-BF76-BE76EDDE2064}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{1B3312A4-6A4F-4B19-BF76-BE76EDDE2064}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Testes", "5 - Testes", "{FDD9018E-D840-4D34-B9DF-7A82E7EB9D60}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Testes", "6 - Testes", "{FDD9018E-D840-4D34-B9DF-7A82E7EB9D60}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Dominio", "EAgendaMedica.Dominio\EAgendaMedica.Dominio.csproj", "{A9D2AF85-0FD6-4C75-9C2E-7AFEBD326E64}"
 EndProject
@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orm", "Orm", "{7C273E63-DA9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Infra.Orm", "EAgendaMedica.Infra.Orm\EAgendaMedica.Infra.Orm.csproj", "{7120AC86-A29C-45F4-8D92-A1686DDEE7F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Testes Unitários", "5.1 - Testes Unitários", "{FC1471CC-030B-40E4-AD9F-43F30077C14E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.1 - Testes Unitários", "6.1 - Testes Unitários", "{FC1471CC-030B-40E4-AD9F-43F30077C14E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - Testes Integração", "5.2 - Testes Integração", "{2B54B4E1-891B-43FD-9D4B-F4D72BBBA383}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.2 - Testes Integração", "6.2 - Testes Integração", "{2B54B4E1-891B-43FD-9D4B-F4D72BBBA383}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.Dominio.Tests", "EAgendaMedica.Dominio.Tests\EAgendaMedica.Dominio.Tests.csproj", "{C5A91B8F-1378-4CA7-AA17-E3E5772E336D}"
 EndProject
@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.WebApi", "EAg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{F7708D97-73AB-47DB-9D6F-459818DE5BD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAgendaMedica.ConsoleApp", "EAgendaMedica.ConsoleApp\EAgendaMedica.ConsoleApp.csproj", "{9F2B21A5-074B-462C-9577-D06B27760495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAgendaMedica.ConsoleApp", "EAgendaMedica.ConsoleApp\EAgendaMedica.ConsoleApp.csproj", "{9F2B21A5-074B-462C-9577-D06B27760495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
