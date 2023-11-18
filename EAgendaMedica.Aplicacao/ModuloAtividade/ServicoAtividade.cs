@@ -1,5 +1,6 @@
 ﻿using EAgendaMedica.Dominio.Compartilhado;
 using EAgendaMedica.Dominio.ModuloAtividade;
+using EAgendaMedica.Dominio.ModuloMedico;
 using FluentResults;
 
 namespace EAgendaMedica.Aplicacao.ModuloAtividade {
@@ -20,6 +21,10 @@ namespace EAgendaMedica.Aplicacao.ModuloAtividade {
 
             await repositorioAtividade.InserirAsync(atividade);
 
+            foreach(Medico m in atividade.Medicos) {
+                m.Atividades.Add(atividade);
+            }
+
             await contextoPersistencia.GravarAsync();
 
             return Result.Ok(atividade);
@@ -33,6 +38,12 @@ namespace EAgendaMedica.Aplicacao.ModuloAtividade {
 
             repositorioAtividade.Editar(atividade);
 
+            foreach (Medico m in atividade.Medicos) {
+                if(!m.Atividades.Contains(atividade)) {
+                    m.Atividades.Add(atividade);
+                }
+            }
+
             await contextoPersistencia.GravarAsync();
 
             return Result.Ok(atividade);
@@ -42,7 +53,16 @@ namespace EAgendaMedica.Aplicacao.ModuloAtividade {
 
             var atividade = await repositorioAtividade.SelecionarPorIdAsync(id);
 
+            if (atividade == null) return Result.Fail($"Atividade {id} não encontrada");
+            
+
             repositorioAtividade.Excluir(atividade);
+
+            foreach (Medico m in atividade.Medicos) {
+                if (m.Atividades.Contains(atividade)) {
+                    m.Atividades.Remove(atividade);
+                }
+            }
 
             await contextoPersistencia.GravarAsync();
 

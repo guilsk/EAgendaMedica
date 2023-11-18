@@ -9,8 +9,8 @@ namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
             CreateMap<Atividade, ListarAtividadeViewModel>();
             CreateMap<Atividade, VisualizarAtividadeViewModel>();
 
-            CreateMap<InserirAtividadeViewModel, Atividade>();
-            CreateMap<EditarAtividadeViewModel, Atividade>();
+            CreateMap<FormsAtividadeViewModel, Atividade>().ForMember(destino => destino.Medicos, opt => opt.Ignore()).AfterMap<ConfigurarMedicoMappingAction>();
+
         }
     }
 
@@ -23,7 +23,7 @@ namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
 
         public void Process(FormsAtividadeViewModel viewModel, Atividade atividade, ResolutionContext context) {
             foreach(Guid id in viewModel.MedicosId)
-            atividade.Medicos.Add(repositorioMedico.SelecionarPorId(id));
+                atividade.Medicos.Add(repositorioMedico.SelecionarPorId(id));
         }
     }
 }

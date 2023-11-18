@@ -39,7 +39,7 @@ namespace EAgendaMedica.Aplicacao.ModuloMedico {
         public async Task<Result> ExcluirAsync(Guid id) {
             var medico = await repositorioMedico.SelecionarPorIdAsync(id);
 
-            if (medico == null) return Result.Fail($"Categoria {id} não encontrada");
+            if (medico == null) return Result.Fail($"Medico {id} não encontrado");
 
             repositorioMedico.Excluir(medico);
 

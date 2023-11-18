@@ -6,5 +6,9 @@ namespace EAgendaMedica.Dominio.ModuloMedico {
         public string Nome { get; set; }
         public string Crm { get; set; }
         public List<Atividade> Atividades { get; set; }
+
+        public Medico() {
+            Atividades = new List<Atividade>();
+        }
     }
 }

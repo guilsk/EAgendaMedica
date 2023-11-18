@@ -45,6 +45,9 @@ namespace EAgendaMedica.WebApi {
                 config.AddProfile<AtividadeProfile>();
             });
 
+
+
+
             builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -53,6 +56,11 @@ namespace EAgendaMedica.WebApi {
                 c.MapType<TimeSpan>(() => new OpenApiSchema {
                     Type = "string",
                     Example = new OpenApiString("00:00:00")
+                });
+                c.MapType<DateTime>(() => new OpenApiSchema {
+                    Type = "string",
+                    Example = new OpenApiString(DateTime.Now.ToString("23-11-2023"))
+
                 });
 
             });

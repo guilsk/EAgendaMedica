@@ -6,31 +6,34 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
     public class ValidadorAtividade : AbstractValidator<Atividade> {
         public ValidadorAtividade() { 
             
-            RuleFor(x => x.Descricao).NotNull().NotEmpty().WithMessage("Descrição não pode ser vazia.");
+            RuleFor(x => x.Descricao).NotNull().NotEmpty();
             RuleFor(x => x.Data).NotNull().NotEmpty();
-            RuleFor(x => x.HoraInicio).NotNull().NotEmpty();
-            RuleFor(x => x.HoraFim).NotNull().NotEmpty();
-            RuleFor(x => x.TipoAtividade).IsInEnum();
+            RuleFor(x => x.HoraInicio).NotNull();
+            RuleFor(x => x.HoraFim).NotNull();
+            RuleFor(x => x.TipoAtividade).IsInEnum().Must(tipo => tipo == TipoAtividadeEnum.Cirurgia || tipo == TipoAtividadeEnum.Consulta);
             When(x => x.TipoAtividade == TipoAtividadeEnum.Consulta, () => {
                 RuleFor(x => x.Medicos.Count).Equals(1);
             });
             When(x => x.TipoAtividade == TipoAtividadeEnum.Cirurgia, () => {
-                RuleFor(x => x.Medicos.Count).NotNull().NotEmpty();
+                RuleFor(x => x.Medicos).NotNull().NotEmpty();
             });
             
         }
 
         public bool ConfirmarSeAtividadeTemConflitoDeHorario(Atividade atividade) {
-            if(atividade.Medicos != null)
-            foreach (Medico medico in atividade.Medicos) {
-                if (medico.Atividades.Any()) {
-                    foreach (Atividade atividadeDoMedico in medico.Atividades) {
-                        if (atividade.Data == atividadeDoMedico.Data) {
-                            if (atividade.TipoAtividade == TipoAtividadeEnum.Consulta) {
-                                if (atividade.HoraInicio.Minutes.CompareTo(atividadeDoMedico.HoraFim.Minutes) < 20) return true;
-                            } else {
-                                if (atividade.HoraInicio.Minutes.CompareTo(atividadeDoMedico.HoraFim.Minutes) < 240) return true;
-                            }
+
+            foreach (Medico medico in atividade.Medicos ?? Enumerable.Empty<Medico>()) {
+                foreach (Atividade atividadeDoMedico in medico.Atividades ?? Enumerable.Empty<Atividade>()) {
+
+                    // Verifica se os médicos da atividade possuem outra atividade no mesmo dia ou no dia anterior
+                    if ((atividade.Data == atividadeDoMedico.Data) || 
+                        (atividadeDoMedico.HoraInicio >= atividadeDoMedico.HoraFim && atividadeDoMedico.Data.AddDays(1) == atividade.Data)) {
+                        TimeSpan diferenca = atividade.HoraFim - atividadeDoMedico.HoraInicio;
+
+                        // Restante da lógica de verificação de conflito
+                        if ((atividade.TipoAtividade == TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 20) ||
+                            (atividade.TipoAtividade != TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 240)) {
+                            return true;
                         }
                     }
                 }

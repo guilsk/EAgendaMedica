@@ -7,7 +7,7 @@ namespace EAgendaMedica.Dominio.ModuloMedico {
         public ValidadorMedico() {
 
             RuleFor(x => x.Nome).NotNull().NotEmpty();
-            RuleFor(x => x.Crm).Crm().NotNull().NotEmpty();
+            RuleFor(x => x.Crm).Crm().NotNull().NotEmpty().WithMessage("O CRM deve estar no formato '00000-AA'");
 
         }
     }
