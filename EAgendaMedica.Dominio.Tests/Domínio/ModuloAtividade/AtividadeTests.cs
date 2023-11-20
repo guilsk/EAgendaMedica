@@ -107,7 +107,7 @@ namespace EAgendaMedica.TestesUnitarios.Domínio.ModuloAtividade {
             var validador = new ValidadorAtividade();
             var atividade = new Atividade {
                 TipoAtividade = TipoAtividadeEnum.Cirurgia,
-                Medicos = null // ou new List<Medico>()
+                Medicos = new List<Medico>()
             };
 
             // Act

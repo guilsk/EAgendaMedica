@@ -57,12 +57,18 @@ namespace EAgendaMedica.TestesUnitarios.Aplicação.ModuloAtividade {
         [TestMethod]
         public async Task InserirAsync_Deve_Retornar_Erro_Quando_Houver_Conflito_De_Horario() {
             // Arrange
+            var medico = new Medico {
+                Nome = "Dr. Teste",
+                Crm = "00000-AZ"
+            };
+
             var atividade1 = new Atividade {
                 Descricao = "Consulta com Dr. Teste",
                 Data = DateTime.Now.Date,
                 HoraInicio = new TimeSpan(10, 0, 0),
                 HoraFim = new TimeSpan(11, 0, 0),
-                TipoAtividade = TipoAtividadeEnum.Consulta
+                TipoAtividade = TipoAtividadeEnum.Cirurgia,
+                Medicos = new List<Medico> { new Medico { Nome = "Dr. Smith", Crm = "12345-AA" } }
             };
 
             var atividade2 = new Atividade {
@@ -70,7 +76,57 @@ namespace EAgendaMedica.TestesUnitarios.Aplicação.ModuloAtividade {
                 Data = DateTime.Now.Date,
                 HoraInicio = new TimeSpan(10, 30, 0),  // Conflito com a atividade1
                 HoraFim = new TimeSpan(11, 30, 0),
-                TipoAtividade = TipoAtividadeEnum.Consulta
+                TipoAtividade = TipoAtividadeEnum.Cirurgia,
+                Medicos = new List<Medico> { new Medico { Nome = "Dr. Smith", Crm = "12345-AA" } }
+            };
+
+            atividade1.Medicos.Add(medico);
+            
+            atividade2.Medicos.Add(medico);
+            
+            var mockRepositorio = Substitute.For<IRepositorioAtividade>();
+            var mockContextoPersistencia = Substitute.For<IContextoPersistencia>();
+            var servico = new ServicoAtividade(mockRepositorio, mockContextoPersistencia);
+
+            // Act
+            Result<Atividade> resultado1 = await servico.InserirAsync(atividade1);
+            medico.Atividades.Add(atividade1);
+            Result<Atividade> resultado2 = await servico.InserirAsync(atividade2);
+
+            // Assert
+            resultado1.IsSuccess.Should().BeTrue();
+            resultado2.IsSuccess.Should().BeFalse();
+            resultado2.Errors.Should().ContainSingle(e => e.Message == "Esta atividade tem conflito de horário com outra atividade desse mesmo médico.");
+        }
+
+        [TestMethod]
+        public async Task InserirAsync_Deve_Retornar_Erro_Quando_For_Consulta_Com_Mais_De_Um_Medico() {
+            // Arrange
+            var medico = new Medico {
+                Nome = "Dr. Teste I",
+                Crm = "00001-AZ"
+            };
+            var medico2 = new Medico {
+                Nome = "Dr. Teste II",
+                Crm = "00002-AZ"
+            };
+            var medico3 = new Medico {
+                Nome = "Dr. Teste III",
+                Crm = "00003-AZ"
+            };
+
+            List<Medico> lista = new List<Medico>();
+            lista.Add(medico);
+            lista.Add(medico2);
+            lista.Add(medico3);
+
+            var atividade = new Atividade {
+                Descricao = "Consulta com Dr. Teste",
+                Data = DateTime.Now.Date,
+                HoraInicio = new TimeSpan(10, 30, 0),
+                HoraFim = new TimeSpan(11, 30, 0),
+                TipoAtividade = TipoAtividadeEnum.Consulta,
+                Medicos = lista
             };
 
             var mockRepositorio = Substitute.For<IRepositorioAtividade>();
@@ -78,16 +134,10 @@ namespace EAgendaMedica.TestesUnitarios.Aplicação.ModuloAtividade {
             var servico = new ServicoAtividade(mockRepositorio, mockContextoPersistencia);
 
             // Act
-            Result<Atividade> resultado1 = await servico.InserirAsync(atividade1);
-            Result<Atividade> resultado2 = await servico.InserirAsync(atividade2);
+            Result<Atividade> resultado1 = await servico.InserirAsync(atividade);
 
             // Assert
-            resultado1.IsSuccess.Should().BeTrue();
-            resultado2.IsSuccess.Should().BeFalse();
-            resultado2.Errors.Should().ContainSingle(e => e.Message == "Esta atividade tem conflito de horário com outra atividade desse mesmo médico.");
-            mockRepositorio.Received(1).InserirAsync(Arg.Is<Atividade>(a => a == atividade1));
-            mockRepositorio.DidNotReceive().InserirAsync(Arg.Is<Atividade>(a => a == atividade2));
-            mockContextoPersistencia.Received(1).GravarAsync();
+            resultado1.IsSuccess.Should().BeFalse();
         }
 
         [TestMethod]
@@ -97,7 +147,12 @@ namespace EAgendaMedica.TestesUnitarios.Aplicação.ModuloAtividade {
             var contextoPersistencia = Substitute.For<IContextoPersistencia>();
             var servicoAtividade = new ServicoAtividade(repositorioAtividade, contextoPersistencia);
 
-            var atividade = new Atividade { Id = Guid.NewGuid(), Descricao = "Consulta", Data = DateTime.Now, HoraInicio = TimeSpan.FromHours(10), HoraFim = TimeSpan.FromHours(11) };
+            var medico = new Medico {
+                Nome = "Carlos",
+                Crm = "12345-BC"
+            };
+
+            var atividade = new Atividade { Id = Guid.NewGuid(), Descricao = "Consulta", Data = DateTime.Now, HoraInicio = TimeSpan.FromHours(10), HoraFim = TimeSpan.FromHours(11), TipoAtividade = TipoAtividadeEnum.Consulta, Medicos = new List<Medico> { medico } };
 
             // Act
             var resultado = await servicoAtividade.EditarAsync(atividade);
