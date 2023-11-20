@@ -118,7 +118,5 @@ namespace EAgendaMedica.TestesUnitarios.Domínio.ModuloAtividade {
 
         }
 
-
-
     }
 }
