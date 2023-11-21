@@ -12,8 +12,7 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
             RuleFor(x => x.HoraFim).NotNull();
             RuleFor(x => x.TipoAtividade).IsInEnum().Must(tipo => tipo == TipoAtividadeEnum.Cirurgia || tipo == TipoAtividadeEnum.Consulta);
 
-            RuleFor(atividade => atividade)
-            .Custom((atividade, context) => {
+            RuleFor(atividade => atividade).Custom((atividade, context) => {
                 if (atividade.TipoAtividade == TipoAtividadeEnum.Consulta && atividade.Medicos.Count != 1)
                     context.AddFailure("Consulta deve ter exatamente um médico.");
 
