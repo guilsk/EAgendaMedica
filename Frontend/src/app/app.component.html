@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
-<main class="bg-dark container-fluid">
+<app-loading *ngIf="(estaCarregando$ | async) == true"></app-loading>
+<main>
   <router-outlet></router-outlet>
 </main>
