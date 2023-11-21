@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/core/auth/services/local-storage.service";
 import { FormsMedicoViewModel } from "../models/forms-medico.view-model";
