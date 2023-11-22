@@ -45,9 +45,6 @@ namespace EAgendaMedica.WebApi {
                 config.AddProfile<AtividadeProfile>();
             });
 
-
-
-
             builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,1 +1,32 @@
-<p>editar-medicos works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
+            <div class="text-md-start">
+                <h1 class="fw-bold text-primary">Editar Médico</h1>
+            </div>
+
+            <form [formGroup]="form" class="mt-4">
+                <div class="form-group mb-3 position-relative">
+                    <label class="form-label">Nome:</label>
+                    <input formControlName="nome" class="form-control" type="text" placeholder="Digite o nome do médico" />
+                </div>
+
+                <div class="form-group mb-3 position-relative">
+                    <label class="form-label">CRM:</label>
+                    <input formControlName="crm" class="form-control" type="text" placeholder="Digite o crm do médico" />
+                </div>
+
+                <div class="card-footer g-grid d-flex gap-1 mt-5">
+                    <button data-cy="btnGravar" (click)="gravar()" type="button" class="btn btn-primary px-5">
+                        <i class="bi bi-save me-2"></i>
+                        Gravar
+                    </button>
+                    <button routerLink="/medicos/listar" type="button" class="btn btn-outline-primary px-5">
+                        <i class="pi pi-arrow-left me-2"></i>
+                        Voltar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

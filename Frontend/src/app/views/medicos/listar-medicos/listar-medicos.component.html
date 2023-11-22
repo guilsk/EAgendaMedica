@@ -1,1 +1,27 @@
-<p>listar-medicos works!</p>
+<div class="container">
+    <div class="row">
+      <!-- Conteúdo principal -->
+      <div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
+        <!-- Titulo -->
+        <div class="text-md-start">
+          <h1 class="fw-bold text-primary">Listar Medicos</h1>
+          <hr />
+        </div>
+  
+        <!-- Barra de Ações -->
+        <div class="d-grid d-md-flex gap-1 mt-5">
+          <a [routerLink]="['/medicos/inserir']" role="button" class="btn btn-primary me-md-1">
+            <i class="pi pi-plus-circle me-2"></i>
+            Novo Medico
+          </a>
+        </div>
+  
+        <!-- Listagem de Registros -->
+        <div class="row mt-3 g-2">
+          <div class="col-12 col-md-6 col-lg-4" *ngFor="let medico of medicos">
+            <app-card-medicos [medico]="medico"></app-card-medicos>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

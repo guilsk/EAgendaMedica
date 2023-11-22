@@ -10,7 +10,7 @@ import { ListarMedicoViewModel } from "../models/listar-medico.view-model";
     providedIn: 'root'
 })
 export class MedicosService {
-    private endpoint: string = ''
+    private endpoint: string = 'https://localhost:7214/swagger/index.html'
 
     constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 

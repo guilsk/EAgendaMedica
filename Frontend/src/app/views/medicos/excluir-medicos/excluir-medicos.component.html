@@ -1,1 +1,51 @@
-<p>excluir-medicos works!</p>
+<div class="container">
+  <div class="row">
+    <!-- Conteúdo principal -->
+    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
+      <!-- Titulo -->
+      <div class="text-md-start">
+        <div class="text-md-start">
+          <h1 class="fw-bold text-primary">Excluir Médico</h1>
+          <hr />
+        </div>
+
+        <h2 class="fs-5">
+          Tem certeza que deseja excluir o médico
+          <span class="fw-bolder fst-italic">"{{ medicoVM.nome }}"</span>?
+        </h2>
+      </div>
+
+      <dl class="form-group mt-4 row">
+        <dt class="col-md-4">
+          <label class="control-label">Nome:</label>
+        </dt>
+        <dd class="col-md-8">{{ medicoVM.nome }}</dd>
+
+        <dt class="col-md-4">
+          <label class="control-label">CRM:</label>
+        </dt>
+        <dd class="col-md-8">{{ medicoVM.crm }}</dd>
+      </dl>
+
+      <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <button
+          data-cy="btnExcluirTarefa"
+          (click)="gravar()"
+          type="button"
+          class="btn btn-danger px-5"
+        >
+          <i class="bi bi-trash-fill me-2"></i>
+          Excluir
+        </button>
+        <button
+          routerLink="/medicos/listar"
+          type="button"
+          class="btn btn-outline-primary px-5"
+        >
+          <i class="bi bi-arrow-return-left me-2"></i>
+          Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
