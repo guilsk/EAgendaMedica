@@ -1,1 +1,33 @@
-<p>card-atividades works!</p>
+<div class="card h-100 border-dark">
+  <div class="card-body d-flex flex-column gap-1">
+    <div class="d-flex flex-column">
+      <h5 class="card-title mb-1 text-primary">
+        {{ atividade.descricao }}
+      </h5>
+      <span class="card-text text-muted">{{ atividade.data | date }}</span>
+    </div>
+    <span class="card-text text-muted fw-semibold">{{ atividade.tipoAtividade }}</span>
+    <span class="card-text fw-semibold">{{ atividade.horaInicio }}</span>
+  </div>
+
+  <div class="d-flex gap-1 justify-content-end card-footer bg-transparent">
+    <button
+      class="btn btn-outline-dark rounded-5 py-2"
+      routerLink="/atividades/editar/{{ atividade.id }}"
+      aria-label="Editar"
+      ngbTooltip="Editar"
+      placement="bottom"
+    >
+      <i class="bi bi-pen"></i>
+    </button>
+    <button
+      class="btn btn-outline-dark rounded-5 py-2"
+      routerLink="/atividades/excluir/{{ atividade.id }}"
+      aria-label="Excluir"
+      ngbTooltip="Excluir"
+      placement="bottom"
+    >
+      <i class="bi bi-trash"></i>
+    </button>
+  </div>
+</div>

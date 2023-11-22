@@ -14,7 +14,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'medicos',
     pathMatch: 'full',
   },
   {
@@ -24,14 +24,12 @@ const routes: Routes = [
   },
   {
     path: 'medicos',
-    loadChildren: () =>
-      import('./views/medicos/medicos.module').then((m) => m.MedicosModule),
+    loadChildren: () => import('./views/medicos/medicos.module').then((m) => m.MedicosModule),
     //canActivate: [authGuard],
   },
   {
     path: 'atividades',
-    loadChildren: () =>
-      import('./views/atividades/atividades.module').then((a) => a.AtividadesModule),
+    loadChildren: () => import('./views/atividades/atividades.module').then((a) => a.AtividadesModule),
     //canActivate: [authGuard],
   },
 ];

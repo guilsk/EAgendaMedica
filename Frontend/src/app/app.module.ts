@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { MedicosModule } from './views/medicos/medicos.module';
+import './extensions/form-group.extension'
 
 @NgModule({
   declarations: [AppComponent],

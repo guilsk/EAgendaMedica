@@ -16,7 +16,6 @@ export class EditarMedicosComponent implements OnInit{
   medicoVM!: FormsMedicoViewModel
 
   constructor(private formBuilder: FormBuilder, private medicosService: MedicosService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute){
-
   }
 
   ngOnInit(): void {
@@ -38,6 +37,17 @@ export class EditarMedicosComponent implements OnInit{
       }
       return
     }
+
+    this.medicoVM = this.form.value
+
+    const id = this.route.snapshot.paramMap.get('id')
+
+    if(!id) return
+
+    this.medicosService.editar(id, this.medicoVM).subscribe({
+      next: (medico) => this.processarSucesso(medico),
+      error: (erro) => this.processarFalha(erro)
+    })
   }
 
   obterMedico(medico: FormsMedicoViewModel){

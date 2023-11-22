@@ -22,7 +22,7 @@ FormGroup.prototype.validate = function () {
                     erros.push(`O campo "${campo}" é obrigatório!`);
                     break;
 
-                case 'email':
+                case 'crm':
                     erros.push(`O campo "${campo}" deve seguir um formato válido!`);
                     break;
             }

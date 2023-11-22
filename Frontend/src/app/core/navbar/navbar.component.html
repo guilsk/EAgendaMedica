@@ -1,1 +1,45 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" routerLink="/"
+      >E-Agenda Médica<i class="bi bi-clipboard2-check-fill text-primary ms-2"></i
+    ></a>
+    <button
+      (click)="estaColapsada = !estaColapsada"
+      class="navbar-toggler"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="estaColapsada == true">
+      <div
+        *ngIf="(usuarioEstaLogado$ | async) == true"
+        class="links w-100 text-center"
+      >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link text-primary"
+              routerLinkActive="fw-semibold"
+              routerLink="/medicos/listar"
+              >Médicos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-primary"
+              routerLinkActive="fw-semibold"
+              routerLink="/atividades/listar"
+              >Atividades</a
+            >
+          <!-- 
+          <li class="nav-item ms-auto">
+            <button (click)="sair()" class="btn btn-primary px-5">
+              <i class="bi bi-door-open-fill me-2"></i>
+              Sair
+            </button>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
