@@ -6,6 +6,7 @@ import { MedicosService } from '../../medicos/services/medicos.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormsAtividadeViewModel } from '../models/forms-atividade.view-model';
+import { ListarMedicoViewModel } from '../../medicos/models/listar-medico.view-model';
 
 @Component({
   selector: 'app-inserir-atividades',
@@ -14,16 +15,16 @@ import { FormsAtividadeViewModel } from '../models/forms-atividade.view-model';
 })
 export class InserirAtividadesComponent implements OnInit{
   form?: FormGroup
-
+  medicos!: ListarMedicoViewModel[]
   atividades: ListarAtividadeViewModel[] = []
 
   constructor(
     private atividadesService: AtividadesService,
-    private medicosService: MedicosService,
+    public medicosService: MedicosService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -36,6 +37,7 @@ export class InserirAtividadesComponent implements OnInit{
     })
 
     this.atividadesService.selecionarTodos().subscribe((res) => (this.atividades = res))
+    this.carregarMedicos()
   }
 
   gravar(){
@@ -60,4 +62,11 @@ export class InserirAtividadesComponent implements OnInit{
   processarFalha(err: Error){
     this.toastrService.error(err.message, 'Error')
   }
+
+  carregarMedicos(){
+    this.medicosService.selecionarTodos().subscribe((medicos: ListarMedicoViewModel[]) => {
+      this.medicos = medicos
+    })
+  }
+
 }

@@ -1,1 +1,92 @@
-<p>TERMINA ESSA BOSTA LOGO</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">Inserir Novo Atividade</h1>
+      </div>
+
+      <form [formGroup]="form!" (ngSubmit)="gravar()" class="mt-4">
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Descrição:</label>
+          <input
+            formControlName="descricao"
+            class="form-control"
+            type="text"
+            placeholder="Digite a descrição da atividade"
+          />
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Tipo de Atividade:</label>
+
+          <div class="d-flex align-items-center gap-2">
+            <input
+              name="tipoAtividade"
+              formControlName="tipoAtividade"
+              type="radio"
+              [value]="0"
+            />
+            Cirurgia
+
+            <input
+              name="tipoAtividade"
+              formControlName="tipoAtividade"
+              type="radio"
+              [value]="1"
+            />
+            Consulta
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Data:</label>
+          <input formControlName="data" class="form-control" type="date" />
+        </div>
+
+        <div class="form-group mb-3 position-relative row">
+          <div class="col-6">
+            <label class="form-label">Hora de Início:</label>
+            <input
+              formControlName="horaInicio"
+              class="form-control"
+              type="time"
+              placeholder="Digite a hora de início do contato"
+            />
+          </div>
+
+          <div class="col">
+            <label class="form-label">Hora de Término:</label>
+            <input
+              formControlName="horaFim"
+              class="form-control"
+              type="time"
+              placeholder="Digite o hora de término do contato"
+            />
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <label for="medicosSelect" class="form-label">Selecione os médicos:</label>
+          <select class="form-select selectpicker" multiple data-live-search="true" id="medicosSelect">
+            <option *ngFor="let medico of medicos" [value]="medico.id">{{ medico.nome }}</option>
+          </select>
+        </div>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button type="submit" class="btn btn-primary px-5">
+            <i class="bi bi-save me-2"></i>
+            Gravar
+          </button>
+          <button
+            routerLink="/atividades/listar"
+            type="button"
+            class="btn btn-outline-primary px-5"
+          >
+            <i class="pi pi-arrow-left me-2"></i>
+            Voltar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
