@@ -29,7 +29,7 @@ namespace EAgendaMedica.WebApi.Controllers {
             return Ok(viewModel);
         }
 
-        [HttpGet("visualisacao-completa/{id}")]
+        [HttpGet("visualizacao-completa/{id}")]
         [ProducesResponseType(typeof(VisualizarAtividadeViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]

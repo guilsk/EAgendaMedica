@@ -6,7 +6,7 @@
       </h5>
       <span class="card-text text-muted">{{ atividade.data | date }}</span>
     </div>
-    <span class="card-text text-muted fw-semibold">{{ atividade.tipoAtividade }}</span>
+    <span class="card-text text-muted fw-semibold">{{ getTipoAtividade(atividade.tipoAtividade) }}</span>
     <span class="card-text fw-semibold">{{ atividade.horaInicio }}</span>
   </div>
 
