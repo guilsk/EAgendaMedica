@@ -32,7 +32,7 @@ export class MedicosService {
     }
     
     public selecionarPorId(id: string): Observable<FormsMedicoViewModel> {
-        return this.http.get<any>(this.endpoint + id).pipe(map((res) => res.dados))
+        return this.http.get<any>(this.endpoint + 'visualizacao-completa/' + id).pipe(map((res) => res.dados))
     }
 
     public selecionarMedicoCompletoPorId(id: string): Observable<VisualizarMedicoViewModel>{

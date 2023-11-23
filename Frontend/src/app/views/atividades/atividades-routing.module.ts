@@ -7,6 +7,7 @@ import { VisualizarAtividadeViewModel } from "./models/visualizar-atividade.view
 import { ListarAtividadesComponent } from "./listar-atividades/listar-atividades.component";
 import { InserirAtividadesComponent } from "./inserir-atividades/inserir-atividades.component";
 import { ExcluirAtividadesComponent } from "./excluir-atividades/excluir-atividades.component";
+import { EditarAtividadesComponent } from "./editar-atividades/editar-atividades.component";
 
 const listarAtividadesResolver: ResolveFn<ListarAtividadeViewModel[]> = () => {
     return inject(AtividadesService).selecionarTodos()
@@ -43,6 +44,11 @@ const routes: Routes = [
     },
     {
         path: 'editar/:id',
+        component: EditarAtividadesComponent,
+        resolve: { atividade: formsAtividadeResolver }
+    },
+    {
+        path: 'excluir/:id',
         component: ExcluirAtividadesComponent,
         resolve: { atividade: visualizarAtividadeResolver }
     }

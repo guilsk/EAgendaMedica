@@ -7,6 +7,7 @@ import { VisualizarMedicoViewModel } from "./models/visualizar-medico.view-model
 import { ListarMedicosComponent } from "./listar-medicos/listar-medicos.component";
 import { InserirMedicosComponent } from "./inserir-medicos/inserir-medicos.component";
 import { ExcluirMedicosComponent } from "./excluir-medicos/excluir-medicos.component";
+import { EditarMedicosComponent } from "./editar-medicos/editar-medicos.component";
 
 const listarMedicosResolver: ResolveFn<ListarMedicoViewModel[]> = () => {
     return inject(MedicosService).selecionarTodos()
@@ -43,7 +44,7 @@ const routes: Routes = [
     },
     {
         path: 'editar/:id',
-        component: ExcluirMedicosComponent,
+        component: EditarMedicosComponent,
         resolve: { medico: formsMedicoResolver }
     },
     {
