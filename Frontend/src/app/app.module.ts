@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { MedicosModule } from './views/medicos/medicos.module';
+import { HttpClientModule } from '@angular/common/http';
 import './extensions/form-group.extension'
 
 @NgModule({
@@ -17,6 +18,7 @@ import './extensions/form-group.extension'
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
 
     NgbModule,
     ToastrModule.forRoot({

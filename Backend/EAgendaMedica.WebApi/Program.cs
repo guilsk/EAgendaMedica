@@ -45,6 +45,13 @@ namespace EAgendaMedica.WebApi {
                 config.AddProfile<AtividadeProfile>();
             });
 
+            builder.Services.AddCors(options => {
+                options.AddPolicy("desenvolvimento",
+                    builder => {
+                        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
+
             builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -74,8 +81,9 @@ namespace EAgendaMedica.WebApi {
 
             app.UseHttpsRedirection();
 
+            app.UseCors("desenvolvimento");
+            
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { LocalStorageService } from "src/app/core/auth/services/local-storage.service";
+//import { LocalStorageService } from "src/app/core/auth/services/local-storage.service";
 import { FormsMedicoViewModel } from "../models/forms-medico.view-model";
 import { Observable, map } from "rxjs";
 import { VisualizarMedicoViewModel } from "../models/visualizar-medico.view-model";
@@ -10,9 +10,9 @@ import { ListarMedicoViewModel } from "../models/listar-medico.view-model";
     providedIn: 'root'
 })
 export class MedicosService {
-    private endpoint: string = 'https://localhost:7214/swagger/index.html'
+    private endpoint: string = 'https://localhost:7214/api/medicos/'
 
-    constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
+    constructor(private http: HttpClient/*, private localStorage: LocalStorageService*/) { }
 
     public inserir(medico: FormsMedicoViewModel): Observable<FormsMedicoViewModel> {
 

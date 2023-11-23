@@ -12,7 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [InserirMedicosComponent, ListarMedicosComponent, CardMedicosComponent, EditarMedicosComponent, ExcluirMedicosComponent],
-    imports: [CommonModule, MedicosRoutingModule, ReactiveFormsModule],
+    imports: [CommonModule, MedicosRoutingModule, ReactiveFormsModule, HttpClientModule],
     providers: [MedicosService]
 })
 export class MedicosModule {}

@@ -8,12 +8,11 @@ import { ExcluirAtividadesComponent } from './excluir-atividades/excluir-ativida
 import { ReactiveFormsModule } from '@angular/forms';
 import { AtividadesRoutingModule } from './atividades-routing.module';
 import { AtividadesService } from './services/atividades.service';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [InserirAtividadesComponent, ListarAtividadesComponent, CardAtividadesComponent, EditarAtividadesComponent, ExcluirAtividadesComponent],
-  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule, HttpClientModule],
   providers: [AtividadesService]
 
 })
