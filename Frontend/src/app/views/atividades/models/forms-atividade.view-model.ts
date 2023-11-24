@@ -1,4 +1,3 @@
-import { Time } from "@angular/common"
 import { TipoAtividadeEnum } from "./tipo-atividade.enum"
 
 export type FormsAtividadeViewModel = {

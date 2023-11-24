@@ -9,7 +9,7 @@ import { InserirMedicosComponent } from "./inserir-medicos/inserir-medicos.compo
 import { ExcluirMedicosComponent } from "./excluir-medicos/excluir-medicos.component";
 import { EditarMedicosComponent } from "./editar-medicos/editar-medicos.component";
 
-const listarMedicosResolver: ResolveFn<ListarMedicoViewModel[]> = () => {
+export const listarMedicosResolver: ResolveFn<ListarMedicoViewModel[]> = () => {
     return inject(MedicosService).selecionarTodos()
 }
 

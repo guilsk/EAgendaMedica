@@ -24,7 +24,7 @@ export class EditarMedicosComponent implements OnInit{
       crm: new FormControl('', [Validators.required])
     })
 
-    this.route.data.pipe(map((dados) => dados['medicos'])).subscribe({
+    this.route.data.pipe(map((dados) => dados['medico'])).subscribe({
       next: (medico) => this.obterMedico(medico),
       error: (erro) => this.processarFalha(erro)
     })
