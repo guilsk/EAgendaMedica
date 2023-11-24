@@ -25,6 +25,10 @@
           <label class="control-label">CRM:</label>
         </dt>
         <dd class="col-md-8">{{ medicoVM.crm }}</dd>
+        <dt class="col-md-4">
+          <label class="control-label">Atividades:</label>
+        </dt>
+        <dd class="col-md-8"><div *ngFor="let atividade of medicoVM.atividades">{{ atividade.descricao }}</div></dd>
       </dl>
 
       <div class="card-footer g-grid d-flex gap-1 mt-5">

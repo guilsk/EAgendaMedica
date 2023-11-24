@@ -21,7 +21,7 @@ export class EditarMedicosComponent implements OnInit{
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nome: new FormControl('', [Validators.required]),
-      crm: new FormControl('', [Validators.required, /* Validators.crm */])
+      crm: new FormControl('', [Validators.required])
     })
 
     this.route.data.pipe(map((dados) => dados['medicos'])).subscribe({

@@ -30,7 +30,7 @@ export class AtividadesService{
     }
     
     public selecionarPorId(id: string): Observable<FormsAtividadeViewModel> {
-        return this.http.get<any>(this.endpoint + id).pipe(map((res) => res.dados))
+        return this.http.get<any>(this.endpoint + 'visualizacao-completa/' + id).pipe(map((res) => res.dados))
     }
 
     public selecionarAtividadeCompletoPorId(id: string): Observable<VisualizarAtividadeViewModel>{
