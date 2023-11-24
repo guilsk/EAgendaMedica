@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [InserirAtividadesComponent, ListarAtividadesComponent, CardAtividadesComponent, EditarAtividadesComponent, ExcluirAtividadesComponent],
-  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule, HttpClientModule, CommonModule],
   providers: [AtividadesService]
 
 })
