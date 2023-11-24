@@ -9,11 +9,11 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  usuario$?: Observable<UsuarioTokenViewModel | undefined>;
+  // usuario$?: Observable<UsuarioTokenViewModel | undefined>;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.usuario$ = this.authService.obterUsuarioAutenticado();
+    // this.usuario$ = this.authService.obterUsuarioAutenticado();
   }
 }
