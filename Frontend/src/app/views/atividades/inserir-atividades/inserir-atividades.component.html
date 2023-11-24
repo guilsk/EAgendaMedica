@@ -7,6 +7,7 @@
 
       <form [formGroup]="form!" (ngSubmit)="gravar()" class="mt-4">
         <div class="form-group mb-3 position-relative">
+          {{form?.value | json}}
           <label class="form-label">Descrição:</label>
           <input formControlName="descricao" class="form-control" type="text"
             placeholder="Digite a descrição da atividade" />
@@ -45,7 +46,7 @@
 
         <div class="form-group mb-3 position-relative">
           <label class="form-label">Médicos:</label>
-          <ng-select formControlName="medicosID" [multiple]="true">
+          <ng-select formControlName="medicosId" [multiple]="true">
             <ng-option *ngFor="let medico of medicos" [value]="medico.id">{{ medico.nome }}</ng-option>
           </ng-select>
         </div>

@@ -33,7 +33,7 @@ export class InserirAtividadesComponent implements OnInit{
       horaInicio: new FormControl('', [Validators.required]),
       horaFim: new FormControl('', [Validators.required]),
       tipoAtividade: new FormControl(0, [Validators.required]),
-      listaMedicos: new FormControl([], [Validators.required]),
+      medicosId: new FormControl([], [Validators.required]),
     })
 
     this.atividadesService.selecionarTodos().subscribe((res) => (this.atividades = res))

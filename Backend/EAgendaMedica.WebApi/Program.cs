@@ -23,7 +23,7 @@ namespace EAgendaMedica.WebApi {
             // Add services to the container.
 
             builder.Services.Configure<ApiBehaviorOptions>(config => {
-                config.SuppressModelStateInvalidFilter = true;
+                config.SuppressModelStateInvalidFilter = false;
             });
 
             var connectionString = builder.Configuration.GetConnectionString("SqlServer");

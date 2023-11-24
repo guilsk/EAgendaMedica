@@ -9,10 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AtividadesRoutingModule } from './atividades-routing.module';
 import { AtividadesService } from './services/atividades.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [InserirAtividadesComponent, ListarAtividadesComponent, CardAtividadesComponent, EditarAtividadesComponent, ExcluirAtividadesComponent],
-  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [CommonModule, AtividadesRoutingModule, ReactiveFormsModule, HttpClientModule, NgSelectModule],
   providers: [AtividadesService]
 
 })
