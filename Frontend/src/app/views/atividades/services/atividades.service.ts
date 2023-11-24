@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-//import { LocalStorageService } from "src/app/core/auth/services/local-storage.service";
 import { FormsAtividadeViewModel } from "../models/forms-atividade.view-model";
 import { Observable, map } from "rxjs";
 import { ListarAtividadeViewModel } from "../models/listar-atividade.view-model";
@@ -12,10 +11,9 @@ import { VisualizarAtividadeViewModel } from "../models/visualizar-atividade.vie
 export class AtividadesService{
     private endpoint: string = 'https://localhost:7214/api/atividades/'
 
-    constructor(private http: HttpClient/*, private localStorage: LocalStorageService*/) { }
+    constructor(private http: HttpClient) { }
 
     public inserir(atividade: FormsAtividadeViewModel): Observable<FormsAtividadeViewModel> {
-
         return this.http.post<any>(this.endpoint, atividade)
     }
 

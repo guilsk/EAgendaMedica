@@ -11,15 +11,9 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
             RuleFor(x => x.HoraInicio).NotNull();
             RuleFor(x => x.HoraFim).NotNull();
             RuleFor(x => x.TipoAtividade).IsInEnum().Must(tipo => tipo == TipoAtividadeEnum.Cirurgia || tipo == TipoAtividadeEnum.Consulta);
+            RuleFor(a => a.Medicos.Count).Equal(1).When(a => a.TipoAtividade == TipoAtividadeEnum.Consulta).WithMessage("A consulta só deve ter um médico selecionado.");
+            RuleFor(a => a.Medicos).NotEmpty().WithMessage("Pelo Menos um médico deve ser selecionado.");
 
-            RuleFor(atividade => atividade).Custom((atividade, context) => {
-                if (atividade.TipoAtividade == TipoAtividadeEnum.Consulta && atividade.Medicos.Count != 1)
-                    context.AddFailure("Consulta deve ter exatamente um médico.");
-
-                if (atividade.TipoAtividade == TipoAtividadeEnum.Cirurgia && !atividade.Medicos.Any())
-                    context.AddFailure("Cirurgia deve ter pelo menos um médico.");
-            });
-           
         }
 
         public bool ConfirmarSeAtividadeTemConflitoDeHorario(Atividade atividade) {

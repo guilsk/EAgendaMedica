@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormsAtividadeViewModel } from '../models/forms-atividade.view-model';
 import { ListarMedicoViewModel } from '../../medicos/models/listar-medico.view-model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inserir-atividades',
@@ -47,10 +48,9 @@ export class InserirAtividadesComponent implements OnInit{
       }
       return
     }
-
     this.atividadesService.inserir(this.form?.value).subscribe({
       next: (atividadeInserida) => this.processarSucesso(atividadeInserida),
-      error: (err) => this.processarFalha(err)
+      error: (err : HttpErrorResponse) => this.processarFalha(err)
     })
   }
 
@@ -59,8 +59,9 @@ export class InserirAtividadesComponent implements OnInit{
     this.router.navigate(['/atividades/listar'])
   }
 
-  processarFalha(err: Error){
-    this.toastrService.error(err.message, 'Error')
+  processarFalha(err: HttpErrorResponse){
+    const mensagemErro = err.error.erros.length > 0 ? err.error.erros[0] : 'Ocorreu um erro desconhecido.';
+    this.toastrService.error(mensagemErro)
   }
 
   carregarMedicos(){
