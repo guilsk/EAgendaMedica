@@ -40,7 +40,7 @@ export class InserirMedicosComponent implements OnInit{
     }
 
     this.medicosService.inserir(this.form?.value).subscribe({
-      next: (medicoInserido) => this.processarSucesso(medicoInserido),
+      next: () => this.processarSucesso(this.form?.value),
       error: (err) => this.processarFalha(err)
     })
   }

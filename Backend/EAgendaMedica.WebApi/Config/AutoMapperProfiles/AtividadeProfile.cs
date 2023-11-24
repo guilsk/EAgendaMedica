@@ -22,6 +22,7 @@ namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
         }
 
         public void Process(FormsAtividadeViewModel viewModel, Atividade atividade, ResolutionContext context) {
+            atividade.Medicos.Clear();
             foreach(Guid id in viewModel.MedicosId)
                 atividade.Medicos.Add(repositorioMedico.SelecionarPorId(id));
         }

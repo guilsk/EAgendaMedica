@@ -45,7 +45,7 @@ export class EditarMedicosComponent implements OnInit{
     if(!id) return
 
     this.medicosService.editar(id, this.medicoVM).subscribe({
-      next: (medico) => this.processarSucesso(medico),
+      next: () => this.processarSucesso(this.medicoVM),
       error: (erro) => this.processarFalha(erro)
     })
   }

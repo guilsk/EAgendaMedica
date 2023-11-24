@@ -49,7 +49,7 @@ export class InserirAtividadesComponent implements OnInit{
       return
     }
     this.atividadesService.inserir(this.form?.value).subscribe({
-      next: (atividadeInserida) => this.processarSucesso(atividadeInserida),
+      next: () => this.processarSucesso(this.form?.value),
       error: (err : HttpErrorResponse) => this.processarFalha(err)
     })
   }

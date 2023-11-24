@@ -55,7 +55,7 @@ export class EditarAtividadesComponent {
     if(!id) return
 
     this.atividadesService.editar(id, this.atividadeVM).subscribe({
-      next: (atividade) => this.processarSucesso(atividade),
+      next: () => this.processarSucesso(this.atividadeVM),
       error: (erro) => this.processarFalha(erro)
     })
   }
