@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicosService } from '../services/medicos.service';
 import { map } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-medicos',
@@ -60,8 +61,9 @@ export class EditarMedicosComponent implements OnInit{
     this.router.navigate(['/medicos/listar'])
   }
   
-  processarFalha(erro: Error){
-    this.toastrService.error(erro.message, 'Error')
+  processarFalha(err: HttpErrorResponse){
+    const mensagemErro = err.error.erros.length > 0 ? err.error.erros[0] : 'Ocorreu um erro desconhecido.';
+    this.toastrService.error(mensagemErro)
   }
 
 }

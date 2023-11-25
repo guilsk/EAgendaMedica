@@ -4,6 +4,7 @@ import { FormsMedicoViewModel } from '../models/forms-medico.view-model';
 import { MedicosService } from '../services/medicos.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inserir-medicos',
@@ -50,8 +51,9 @@ export class InserirMedicosComponent implements OnInit{
     this.router.navigate(['/medicos/listar'])
   }
 
-  processarFalha(erro: Error){
-    this.toastrService.error(erro.message, 'Error')
+  processarFalha(err: HttpErrorResponse){
+    const mensagemErro = err.error.erros.length > 0 ? err.error.erros[0] : 'Ocorreu um erro desconhecido.';
+    this.toastrService.error(mensagemErro)
   }
 
 }

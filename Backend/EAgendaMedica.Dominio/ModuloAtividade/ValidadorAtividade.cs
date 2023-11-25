@@ -20,16 +20,22 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
 
             foreach (Medico medico in atividade.Medicos ?? Enumerable.Empty<Medico>()) {
                 foreach (Atividade atividadeDoMedico in medico.Atividades ?? Enumerable.Empty<Atividade>()) {
-                    
-                    if(atividade.Id != atividadeDoMedico.Id) {
+
+                    if (atividade.Id != atividadeDoMedico.Id) {
                         // Verifica se os médicos da atividade possuem outra atividade no mesmo dia ou no dia anterior
-                        if ((atividade.Data == atividadeDoMedico.Data) || 
+                        if ((atividade.Data == atividadeDoMedico.Data) ||
                             (atividadeDoMedico.HoraInicio >= atividadeDoMedico.HoraFim && atividadeDoMedico.Data.AddDays(1) == atividade.Data)) {
-                            TimeSpan diferenca = atividade.HoraFim - atividadeDoMedico.HoraInicio;
+
+                            if (atividade.HoraInicio >= atividadeDoMedico.HoraInicio && atividade.HoraInicio <= atividadeDoMedico.HoraFim ||
+                                atividade.HoraFim >= atividadeDoMedico.HoraInicio && atividade.HoraFim <= atividadeDoMedico.HoraFim) {
+                                return true;
+                            }
+
+                            TimeSpan diferenca = atividadeDoMedico.HoraFim - atividade.HoraInicio;
 
                             // Restante da lógica de verificação de conflito
                             if ((atividade.TipoAtividade == TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 20) ||
-                                (atividade.TipoAtividade != TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 240)) {
+                                (atividade.TipoAtividade == TipoAtividadeEnum.Cirurgia && diferenca.TotalMinutes < 240)) {
                                 return true;
                             }
                         }

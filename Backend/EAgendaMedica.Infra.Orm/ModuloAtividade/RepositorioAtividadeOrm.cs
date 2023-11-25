@@ -10,6 +10,9 @@ namespace EAgendaMedica.Infra.Orm.ModuloAtividade
 
         public override Atividade SelecionarPorId(Guid id) => registros.SingleOrDefault(x => x.Id == id);
 
-        public override async Task<Atividade> SelecionarPorIdAsync(Guid id) => await registros.Include(x => x.Medicos).SingleOrDefaultAsync(x => x.Id == id);
+        public override async Task<Atividade> SelecionarPorIdAsync(Guid id) => await registros
+            .Include(a => a.Medicos)
+            .ThenInclude(m => m.Atividades)
+            .SingleOrDefaultAsync(a => a.Id == id);
     }
 }

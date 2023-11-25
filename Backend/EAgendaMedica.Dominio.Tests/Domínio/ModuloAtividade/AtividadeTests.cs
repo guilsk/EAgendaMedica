@@ -118,5 +118,59 @@ namespace EAgendaMedica.TestesUnitarios.Domínio.ModuloAtividade {
 
         }
 
+        [TestMethod]
+        public void Teste_conflito_de_horario() {
+            Guid medicoId = Guid.NewGuid();
+            var atividade1 = new Atividade {
+                Descricao = "Atividade 1",
+                Data = DateTime.Today,
+                HoraInicio = TimeSpan.Parse("12:00:00"),
+                HoraFim = TimeSpan.Parse("13:00:00"),
+                TipoAtividade = TipoAtividadeEnum.Consulta,
+                Medicos = { new Medico { Id = medicoId, Nome = "Dr. Teste", Crm = "12345-SC" } }
+
+            };
+            var atividade2 = new Atividade {
+                Descricao = "Atividade 2",
+                Data = DateTime.Today,
+                HoraInicio = TimeSpan.Parse("12:30:00"),
+                HoraFim = TimeSpan.Parse("13:00:00"),
+                TipoAtividade = TipoAtividadeEnum.Consulta,
+                Medicos = { new Medico { Id = medicoId, Nome = "Dr. Teste", Crm = "12345-SC", Atividades = {atividade1} } }
+            };
+
+            bool temConflito = ConfirmarSeAtividadeTemConflitoDeHorario(atividade2);
+
+            temConflito.Should().BeTrue();
+        }
+
+        private bool ConfirmarSeAtividadeTemConflitoDeHorario(Atividade atividade) {
+
+            foreach (Medico medico in atividade.Medicos ?? Enumerable.Empty<Medico>()) {
+                foreach (Atividade atividadeDoMedico in medico.Atividades ?? Enumerable.Empty<Atividade>()) {
+
+                    if (atividade.Id != atividadeDoMedico.Id) {
+                        // Verifica se os médicos da atividade possuem outra atividade no mesmo dia ou no dia anterior
+                        if ((atividade.Data == atividadeDoMedico.Data) ||
+                            (atividadeDoMedico.HoraInicio >= atividadeDoMedico.HoraFim && atividadeDoMedico.Data.AddDays(1) == atividade.Data)) {
+
+                            if(atividade.HoraInicio >= atividadeDoMedico.HoraInicio && atividade.HoraInicio <= atividadeDoMedico.HoraFim) {
+                                return true;
+                            }
+
+                            TimeSpan diferenca = atividadeDoMedico.HoraFim - atividade.HoraInicio;
+
+                            // Restante da lógica de verificação de conflito
+                            if ((atividade.TipoAtividade == TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 20) ||
+                                (atividade.TipoAtividade == TipoAtividadeEnum.Cirurgia && diferenca.TotalMinutes < 240)) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }
