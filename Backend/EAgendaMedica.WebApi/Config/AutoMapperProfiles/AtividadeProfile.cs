@@ -10,7 +10,6 @@ namespace EAgendaMedica.WebApi.Config.AutoMapperProfiles {
             CreateMap<Atividade, VisualizarAtividadeViewModel>();
 
             CreateMap<FormsAtividadeViewModel, Atividade>().ForMember(destino => destino.Medicos, opt => opt.Ignore()).AfterMap<ConfigurarMedicoMappingAction>();
-
         }
     }
 

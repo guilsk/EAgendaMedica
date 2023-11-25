@@ -35,7 +35,10 @@ export class EditarAtividadesComponent {
 
     this.carregarMedicos()
     this.route.data.pipe(map((dados) => dados['atividade'])).subscribe({
-      next: (atividade) => this.obterAtividade(atividade),
+      next: (atividade) => {
+        const formsAtividade = this.atividadesService.converterVisualizarEmForms(atividade)
+        this.obterAtividade(formsAtividade)
+      },
       error: (erro) => this.processarFalha(erro)
     })
   }

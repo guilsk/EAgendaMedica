@@ -36,4 +36,17 @@ export class AtividadesService{
     public selecionarAtividadeCompletoPorId(id: string): Observable<VisualizarAtividadeViewModel>{
         return this.http.get<any>(this.endpoint + 'visualizacao-completa/' + id).pipe(map((res) => res.dados))
     }
+
+    public converterVisualizarEmForms(atividade: VisualizarAtividadeViewModel):FormsAtividadeViewModel{
+        const formsAtividade: FormsAtividadeViewModel = {
+            descricao: atividade.descricao,
+            data: atividade.data,
+            horaInicio: atividade.horaInicio,
+            horaFim: atividade.horaFim,
+            tipoAtividade: atividade.tipoAtividade,
+            medicosId: atividade.medicos.map(medico => medico.id.toString())
+        }
+
+        return formsAtividade
+    }
 }
