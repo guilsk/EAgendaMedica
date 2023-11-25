@@ -4,6 +4,7 @@ using EAgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EAgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(EAgendaDbContext))]
-    partial class EAgendaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231125200146_LastMigrationPls")]
+    partial class LastMigrationPls
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,19 +86,19 @@ namespace EAgendaMedica.Infra.Orm.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f7934e7e-920d-4405-88d5-9a984bc12455"),
+                            Id = new Guid("c67354d9-a94a-4342-a3ff-c71de8cb6883"),
                             Crm = "00000-AA",
                             Nome = "Dr. Teste I"
                         },
                         new
                         {
-                            Id = new Guid("8ca5d08e-f95b-4139-a837-eff0decd6653"),
+                            Id = new Guid("6b5082c9-f463-426a-a299-7562497688e9"),
                             Crm = "09876-ZZ",
                             Nome = "Dr. Teste II"
                         },
                         new
                         {
-                            Id = new Guid("d2956088-b09c-4970-9d24-bae1a9ecb9f6"),
+                            Id = new Guid("3644dbf6-8539-48ea-80d0-4f346f7f586f"),
                             Crm = "12345-AZ",
                             Nome = "Dr. Teste III"
                         });

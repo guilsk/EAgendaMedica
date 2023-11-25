@@ -27,6 +27,14 @@ namespace EAgendaMedica.Infra.Orm.Compartilhado {
 
             base.OnModelCreating(modelBuilder);
         }
+        public async Task InicializarDadosDeTesteAsync() {
+            if (!Set<Medico>().Any()) {
+                Set<Medico>().Add(new Medico { Nome = "Dr. Teste I", Crm = "00000-AA" });
+                Set<Medico>().Add(new Medico { Nome = "Dr. Teste II", Crm = "09876-ZZ" });
+                Set<Medico>().Add(new Medico { Nome = "Dr. Teste III", Crm = "12345-AZ" });
 
+                await SaveChangesAsync();
+            }
+        }
     }
 }

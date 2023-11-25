@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Any;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
+using EAgendaMedica.Infra.Orm.Migrations;
 
 namespace EAgendaMedica.WebApi {
     public class Program {
@@ -70,6 +71,18 @@ namespace EAgendaMedica.WebApi {
             });
 
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment()) {
+                using (var scope = app.Services.CreateScope()) {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<EAgendaDbContext>();
+                    try {
+                        dbContext.InicializarDadosDeTesteAsync().Wait();
+                    } catch (Exception ex) {
+                        // Substitua isso pelo seu mecanismo de log preferido
+                        Console.WriteLine($"Erro ao inicializar dados de teste: {ex.Message}");
+                    }
+                }
+            }
 
             app.UseMiddleware<ManipuladorExcecoes>();
 
