@@ -20,16 +20,18 @@ namespace EAgendaMedica.Dominio.ModuloAtividade
 
             foreach (Medico medico in atividade.Medicos ?? Enumerable.Empty<Medico>()) {
                 foreach (Atividade atividadeDoMedico in medico.Atividades ?? Enumerable.Empty<Atividade>()) {
-                    if (atividade.Id == atividadeDoMedico.Id) return false;
-                    // Verifica se os médicos da atividade possuem outra atividade no mesmo dia ou no dia anterior
-                    if ((atividade.Data == atividadeDoMedico.Data) || 
-                        (atividadeDoMedico.HoraInicio >= atividadeDoMedico.HoraFim && atividadeDoMedico.Data.AddDays(1) == atividade.Data)) {
-                        TimeSpan diferenca = atividade.HoraFim - atividadeDoMedico.HoraInicio;
+                    
+                    if(atividade.Id != atividadeDoMedico.Id) {
+                        // Verifica se os médicos da atividade possuem outra atividade no mesmo dia ou no dia anterior
+                        if ((atividade.Data == atividadeDoMedico.Data) || 
+                            (atividadeDoMedico.HoraInicio >= atividadeDoMedico.HoraFim && atividadeDoMedico.Data.AddDays(1) == atividade.Data)) {
+                            TimeSpan diferenca = atividade.HoraFim - atividadeDoMedico.HoraInicio;
 
-                        // Restante da lógica de verificação de conflito
-                        if ((atividade.TipoAtividade == TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 20) ||
-                            (atividade.TipoAtividade != TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 240)) {
-                            return true;
+                            // Restante da lógica de verificação de conflito
+                            if ((atividade.TipoAtividade == TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 20) ||
+                                (atividade.TipoAtividade != TipoAtividadeEnum.Consulta && diferenca.TotalMinutes < 240)) {
+                                return true;
+                            }
                         }
                     }
                 }
