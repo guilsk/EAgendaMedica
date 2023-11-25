@@ -16,8 +16,11 @@ export class EditarMedicosComponent implements OnInit{
   form!: FormGroup
   medicoVM!: FormsMedicoViewModel
 
-  constructor(private formBuilder: FormBuilder, private medicosService: MedicosService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute){
-  }
+  constructor(private formBuilder: FormBuilder, 
+    private medicosService: MedicosService, 
+    private toastrService: ToastrService, 
+    private router: Router, 
+    private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

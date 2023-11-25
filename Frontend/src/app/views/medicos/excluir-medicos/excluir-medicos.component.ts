@@ -13,8 +13,7 @@ import { map } from 'rxjs';
 export class ExcluirMedicosComponent implements OnInit{
   medicoVM!: VisualizarMedicoViewModel
 
-  constructor(private medicosService: MedicosService, private toastrService: ToastrService, private route: ActivatedRoute, private router: Router){
-  }
+  constructor(private medicosService: MedicosService, private toastrService: ToastrService, private route: ActivatedRoute, private router: Router){ }
 
   ngOnInit(): void {
     this.route.data.pipe(map((dados) => dados['medico'])).subscribe({

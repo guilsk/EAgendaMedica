@@ -1,5 +1,4 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
-import { ListarAtividadeViewModel } from '../models/listar-atividade.view-model';
 import { AtividadesService } from '../services/atividades.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +14,11 @@ import {formatDate} from '@angular/common';
 export class ExcluirAtividadesComponent {
   atividadeVM!: VisualizarAtividadeViewModel
 
-  constructor(private atividadesService: AtividadesService, private toastrService: ToastrService, private route: ActivatedRoute, private router: Router, @Inject(LOCALE_ID) private locale: string){}
+  constructor(private atividadesService: AtividadesService, 
+    private toastrService: ToastrService, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    @Inject(LOCALE_ID) private locale: string){}
 
   ngOnInit(): void {
     this.route.data.pipe(map((dados) => dados['atividade'])).subscribe({

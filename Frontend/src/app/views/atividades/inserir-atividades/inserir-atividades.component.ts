@@ -29,7 +29,7 @@ export class InserirAtividadesComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      descricao: new FormControl('', [Validators.required, /* Validators.minLength(3) */]),
+      descricao: new FormControl('', [Validators.required]),
       data: new FormControl('', [Validators.required]),
       horaInicio: new FormControl('', [Validators.required]),
       horaFim: new FormControl('', [Validators.required]),

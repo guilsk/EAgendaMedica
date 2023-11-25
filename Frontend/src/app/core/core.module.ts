@@ -5,17 +5,14 @@ import { RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingModule } from './loading/loading.module';
 
-
-
 @NgModule({
   declarations: [NavbarComponent],
   imports: [
     CommonModule,
     RouterModule,
     NgbCollapseModule,
-    //AuthModule,
     LoadingModule
   ],
-  exports: [NavbarComponent, /*AuthModule,*/ LoadingModule]
+  exports: [NavbarComponent, LoadingModule]
 })
 export class CoreModule { }

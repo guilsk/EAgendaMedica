@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { ListarMedicoViewModel } from '../../medicos/models/listar-medico.view-model';
-import { MedicosService } from '../../medicos/services/medicos.service';
 import {formatDate} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -20,8 +19,12 @@ export class EditarAtividadesComponent {
   medicos!: Observable<ListarMedicoViewModel[]>
   atividadeVM!: FormsAtividadeViewModel
 
-  constructor(private formBuilder: FormBuilder, private atividadesService: AtividadesService, private medicosService: MedicosService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, @Inject(LOCALE_ID) private locale: string){
-  }
+  constructor(private formBuilder: FormBuilder, 
+    private atividadesService: AtividadesService, 
+    private toastrService: ToastrService, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    @Inject(LOCALE_ID) private locale: string) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

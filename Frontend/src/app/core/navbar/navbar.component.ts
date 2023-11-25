@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { AuthService } from '../auth/services/auth.service';
-import { Router } from '@angular/router';
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -10,23 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit{
   estaColapsada: boolean = true
+  
+  constructor() {}
 
-  usuarioEstaLogado$?: Observable<boolean>
-
-  constructor(/*private authService: AuthService, */private router: Router) {}
-
-  ngOnInit(): void {
-    // this.usuarioEstaLogado$ = this.authService.obterUsuarioAutenticado().pipe(
-    //   map((usuario) => {
-    //     if (!usuario) return false;
-    //     return true;
-    //   })
-    // );
-  }
-
-  sair(): void {/*
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['/login']);
-    });*/
-  }
+  ngOnInit(): void { }
 }

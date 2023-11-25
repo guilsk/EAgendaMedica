@@ -1,36 +1,28 @@
-import { NgModule, inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-  ResolveFn,
-  Router,
-  RouterModule,
-  Routes,
-  UrlTree,
-} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes, } from '@angular/router';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-//import { authGuard } from './core/auth/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'medicos',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    //canActivate: [authGuard],
   },
   {
     path: 'medicos',
     loadChildren: () => import('./views/medicos/medicos.module').then((m) => m.MedicosModule),
-    //canActivate: [authGuard],
   },
   {
     path: 'atividades',
     loadChildren: () => import('./views/atividades/atividades.module').then((a) => a.AtividadesModule),
-    //canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./views/dashboard/dashboard.module').then((d) => d.DashboardModule),
   },
 ];
 

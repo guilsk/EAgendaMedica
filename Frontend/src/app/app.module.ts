@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +18,6 @@ import './extensions/form-group.extension'
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-
     NgbModule,
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -29,22 +27,8 @@ import './extensions/form-group.extension'
     CoreModule,
     DashboardModule,
     MedicosModule,
-    /*
-    RegistroModule,
-    LoginModule,
-    */
   ],
-  providers: [
-    /*
-    {
-    provide: APP_INITIALIZER,
-    useFactory: logarUsuarioSalvoFactory,
-    deps: [AuthService],
-    multi: true,
-    }
-    provideHttpClient(withInterceptors([httpTokenInterceptor])),
-    */
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
